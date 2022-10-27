@@ -1,4 +1,14 @@
-const {Usuario, sequelize} = require('../database/models');
+const {Usuario, sequelize, sequelize} = require('../database/models');
+
+
+async function levantarUsuarios(){
+
+    let arrayDeUsuarios = await Usuario.findAll({include:'publicacoes'});
+    arrayDeUsuarios.forEach(u => console.log(u.toJSON()));
+    sequelize.close();
+}
+
+levantarUsuarios();
 
 // Usuario.findAll({include:'publicacoes'}).then(
 //     arrayDeUsuarios => {
@@ -7,11 +17,3 @@ const {Usuario, sequelize} = require('../database/models');
 //     }
 // );
 
-
-async function levantarUsuarios(){
-    let arrayDeUsuarios = await Usuario.findAll({
-        includes:'publicacoes'});
-    arrayDeUsuarios.forEach(u => console.log(u.toJSON()));
-    sequelize.close();
-}
-levantarUsuarios();

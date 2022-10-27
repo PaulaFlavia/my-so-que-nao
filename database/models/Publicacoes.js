@@ -28,19 +28,16 @@ module.exports = (sequelize, DataTypes) => {
     
     publicacao.associate = (models)=>{
         publicacao.belongsTo(models.Usuario, {foreignKey:'usuarios_id', as: 'autor'});
-        // publicacao.hasMany => um para muitos (Uma publicação tem muitos comentários...)
-        // publicacao.belongsToMany => muitos para muitos (Uma publicacao é curtida por muitos usuários)
-        // publicacao.hasOne => um para um
         publicacao.belongsToMany(
-        models.Usuario,
-        {
-            as:'curtidores',
-            through:'curtidas',
-            foreignKey:'publicacoes_id',
-            otherKey: 'usuarios_id',
-            timestamps:false
-        }
-        )
+            models.Usuario,
+            {
+                as: 'curtidores',
+                through: 'curtidas',
+                foreignKey: 'publicacoes_id',
+                otherKey: 'usuarios_id',
+                timestamps: false
+            }
+        );
     }
 
     return publicacao;
