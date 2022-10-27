@@ -1,9 +1,9 @@
 const config = {
     username: "root",
-    password: "vaiplaneta",
+    password: "Romana11",
     host: "localhost",
     port: 3306,
     dialect: "mysql",
-    database: "osmaker"
+    database: "my-so-que-nao"
 }
 module.exports = config;

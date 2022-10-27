@@ -31,6 +31,16 @@ module.exports = (sequelize, DataTypes) => {
         // publicacao.hasMany => um para muitos (Uma publicação tem muitos comentários...)
         // publicacao.belongsToMany => muitos para muitos (Uma publicacao é curtida por muitos usuários)
         // publicacao.hasOne => um para um
+        publicacao.belongsToMany(
+        models.Usuario,
+        {
+            as:'curtidores',
+            through:'curtidas',
+            foreignKey:'publicacoes_id',
+            otherKey: 'usuarios_id',
+            timestamps:false
+        }
+        )
     }
 
     return publicacao;
