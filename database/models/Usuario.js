@@ -35,8 +35,27 @@ module.exports = (sequelize, DataTypes) => {
     
     usuario.associate = (models) => {
         usuario.hasMany(models.Publicacao, {foreignKey: 'usuarios_id', as:'publicacoes'});
-    }
+        usuario.belongsToMany(
+            models.Publicacao,
+            {
+                as: 'publicacoesCurtidas',
+                through: 'curtidas',
+                foreignKey: 'usuario_id', 
+                otherKey: 'publicacoes_id',
+                timestamps: false
+        }),
+    
+
+        usuario.belongsToMany(
+            models.Usuario,{
+
+                as: 'amigos',
+                through: 'amizades',
+                foreignKey: 'usuarios_id1', 
+                otherKey: 'usuarios_id2',
+                timestamps: false
+            });
 
     return usuario;
 
-}
+}}

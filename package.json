@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nosdemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,11 +20,12 @@
   "homepage": "https://github.com/sergiomoura/my-so-que-nao#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.3"
   },
   "devDependencies": {
+    "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.1"
   }
 }
